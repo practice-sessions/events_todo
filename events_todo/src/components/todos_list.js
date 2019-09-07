@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Todos_list extends Component {
+class Todos_List extends Component {
   render() {
     return (
       <div>
@@ -10,4 +10,4 @@ class Todos_list extends Component {
   }
 }
 
-export default Todos_list;
+export default Todos_List;

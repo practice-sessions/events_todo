@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-export default class Edit_todo extends Component {
-    render() {
-        return (
-            <div>
-                <p>Welcome to Edit Todo Component!!</p>
-            </div>
-        )
-    }
+class Edit_Todo extends Component {
+  render() {
+    return (
+      <div>
+        <p>Welcome to Edit Todo Component!!</p>
+      </div>
+    );
+  }
 }
 
-export default  Edit_todo;
+export default Edit_Todo;
