@@ -21,7 +21,7 @@ class App extends Component {
             </a>
 
             <Link to='/' className='navbar-brand'>
-              MERN-Stack Todo App
+              Todo App
             </Link>
             <div className='collpase navbar-collapse'>
               <ul className='navbar-nav mr-auto'>
