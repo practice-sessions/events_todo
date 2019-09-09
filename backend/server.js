@@ -25,6 +25,13 @@ todoRoutes.route('/').get(function(req, res) {
   });
 });
 
+todoRoutes.route('/:id').get(function(req, res) {
+  let id = req.params.id;
+  Todo.findById(id, function(err, todo) {
+    res.json(todo);
+  });
+});
+
 app.listen(PORT, () => {
   console.log('Server is running on Port: ' + PORT);
 });
