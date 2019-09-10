@@ -18,6 +18,18 @@ class Todos_List extends Component {
     super(props);
     this.state = { todos: [] };
   }
+
+  componentDidMount() {
+    axios
+      .get('http://localhost:5555/todos/')
+      .then(response => {
+        this.setState({ todos: response.data });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  }
+
   render() {
     return (
       <div>
