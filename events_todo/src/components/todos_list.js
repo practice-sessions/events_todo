@@ -30,6 +30,12 @@ class Todos_List extends Component {
       });
   }
 
+  todoList() {
+    return this.state.todos.map(function(currentTodo, i) {
+      return <Todo todo={currentTodo} key={i} />;
+    });
+  }
+
   render() {
     return (
       <div>
