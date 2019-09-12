@@ -5,6 +5,11 @@ class Edit_Todo extends Component {
   constructor(props) {
     super(props);
 
+    this.onChangeTodoDescription = this.onChangeTodoDescription.bind(this);
+    this.onChangeTodoResponsible = this.onChangeTodoResponsible.bind(this);
+    this.onChangeTodoPriority = this.onChangeTodoPriority.bind(this);
+    this.onChangeTodoCompleted = this.onChangeTodoCompleted.bind(this);
+
     this.state = {
       todo_description: '',
       todo_responsible: '',
@@ -27,6 +32,30 @@ class Edit_Todo extends Component {
       .catch(function(error) {
         console.log(error);
       });
+  }
+
+  onChangeTodoDescription(e) {
+    this.setState({
+      todo_description: e.target.value
+    });
+  }
+
+  onChangeTodoResponsible(e) {
+    this.setState({
+      todo_responsible: e.target.value
+    });
+  }
+
+  onChangeTodoPriority(e) {
+    this.setState({
+      todo_priority: e.target.value
+    });
+  }
+
+  onChangeTodoCompleted(e) {
+    this.setState({
+      todo_completed: !this.state.todo_completed
+    });
   }
 
   render() {
