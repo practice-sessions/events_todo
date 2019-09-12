@@ -9,6 +9,7 @@ class Edit_Todo extends Component {
     this.onChangeTodoResponsible = this.onChangeTodoResponsible.bind(this);
     this.onChangeTodoPriority = this.onChangeTodoPriority.bind(this);
     this.onChangeTodoCompleted = this.onChangeTodoCompleted.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       todo_description: '',
@@ -56,6 +57,25 @@ class Edit_Todo extends Component {
     this.setState({
       todo_completed: !this.state.todo_completed
     });
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    const obj = {
+      todo_description: this.state.todo_description,
+      todo_responsible: this.state.todo_responsible,
+      todo_priority: this.state.todo_priority,
+      todo_completed: this.state.todo_completed
+    };
+    console.log(obj);
+    axios
+      .post(
+        'http://localhost:5555/todos/update/' + this.props.match.params.id,
+        obj
+      )
+      .then(res => console.log(res.data));
+
+    this.props.history.push('/');
   }
 
   render() {
