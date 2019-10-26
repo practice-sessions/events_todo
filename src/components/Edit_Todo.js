@@ -15,7 +15,7 @@ class Edit_Todo extends Component {
       todo_description: '',
       todo_responsible: '',
       todo_priority: '',
-      todo_completed: false
+      todo_completed: true
     };
   }
 
