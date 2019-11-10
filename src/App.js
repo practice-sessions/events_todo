@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Create_Todo from './components/Create_Todo';
-import Edit_Todo from './components/Edit_Todo';
-import Todos_List from './components/Todos_List';
+import Create_Todo from './components/create_todo';
+import Edit_Todo from './components/edit_todo';
+import Todos_List from './components/todos_list';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
