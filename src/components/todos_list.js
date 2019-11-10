@@ -4,12 +4,29 @@ import axios from 'axios';
 
 const Todo = props => (
   <tr>
-     <td className={props.todo.todo_completed ? 'completed' : ''}>{props.todo.todo_description}</td>
-        <td className={props.todo.todo_completed ? 'completed' : ''}>{props.todo.todo_responsible}</td>
-        <td className={props.todo.todo_completed ? 'completed' : ''}>{props.todo.todo_priority}</td>
-        <td>
-            <Link to={"/edit/"+props.todo._id}>Edit</Link>
-        </td>
+    <td className={props.todo.todo_completed ? 'completed' : ''}>
+      {props.todo.todo_description}
+    </td>
+    <td className={props.todo.todo_completed ? 'completed' : ''}>
+      {props.todo.todo_responsible}
+    </td>
+    <td className={props.todo.todo_completed ? 'completed' : ''}>
+      {props.todo.todo_priority}
+    </td>
+
+    <td>
+      <Link to={'/Start Date/' + props.todo._id}>Start Date</Link>
+    </td>
+    <td>
+      <Link to={'/Completed Date/' + props.todo._id}>Completed Date</Link>
+    </td>
+    <td>
+      <Link to={'/edit/' + props.todo._id}>Edit</Link>
+    </td>
+
+    <td>
+      <Link to={'/delete/' + props.todo._id}>Delete</Link>
+    </td>
   </tr>
 );
 
@@ -46,7 +63,10 @@ class Todos_List extends Component {
               <th>Description</th>
               <th>Responsible</th>
               <th>Priority</th>
-              <th>Action</th>
+              <th>Start Date</th>
+              <th>Completed Date</th>
+              <th>Edit Todo</th>
+              <th>Delete Todo</th>
             </tr>
           </thead>
           <tbody>{this.todoList()}</tbody>
