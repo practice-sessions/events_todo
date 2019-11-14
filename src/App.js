@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Create_Todo from './components/create_todo';
 import Edit_Todo from './components/edit_todo';
 import Todos_List from './components/todos_list';
+import Delete_Todo from './components/delete_todo';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -46,6 +47,7 @@ class App extends Component {
           <Route path='/' exact component={Todos_List} />
           <Route path='/edit/:id' component={Edit_Todo} />
           <Route path='/create' component={Create_Todo} />
+          <Route path='/delete/:id' component={Delete_Todo} />
         </div>
       </Router>
     );
