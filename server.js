@@ -4,9 +4,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const todoRoutes = express.Router();
-let Todo = require('./models/Todo');
-
 const PORT = 5555;
+require('dotenv').config();
+let Todo = require('./models/Todo');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -61,6 +61,16 @@ todoRoutes.route('/add').post(function(req, res) {
     .catch(err => {
       res.status(400).send('adding new todo failed');
     });
+});
+
+todoRoutes.route('/delete/:id').delete(function(req, res) {
+  const id = req.params.id;
+  Todo.findByIdAndRemove(id, (err, todo) => {
+    if (err) res.status(400).json({ msg: 'Todo not Deleted' });
+    else {
+      res.status(200).json({ msg: `${req.params.id} deleted` });
+    }
+  });
 });
 
 app.listen(PORT, () => {
