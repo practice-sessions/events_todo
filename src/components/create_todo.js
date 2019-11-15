@@ -9,13 +9,17 @@ class Create_Todo extends Component {
     this.onChangeTodoDescription = this.onChangeTodoDescription.bind(this);
     this.onChangeTodoResponsible = this.onChangeTodoResponsible.bind(this);
     this.onChangeTodoPriority = this.onChangeTodoPriority.bind(this);
+    this.onChangeTodoStartDate = this.onChangeTodoStartDate.bind(this);
+    this.onChangeTodoCompleteDate = this.onChangeTodoCompleteDate.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       todo_description: '',
       todo_responsible: '',
       todo_priority: '',
-      todo_completed: false
+      todo_completed: false,
+      todo_startdate: '',
+      todo_completeddate: ''
     };
   }
 
@@ -37,6 +41,18 @@ class Create_Todo extends Component {
     });
   }
 
+  onChangeTodoStartDate(e) {
+    this.setState({
+      todo_startdate: e.target.value
+    });
+  }
+
+   onChangeTodoCompleteDate(e) {
+    this.setState({
+      todo_completeddate: e.target.value
+    });
+  }
+
   onSubmit(e) {
     e.preventDefault();
 
@@ -49,7 +65,10 @@ class Create_Todo extends Component {
       todo_description: this.state.todo_description,
       todo_responsible: this.state.todo_responsible,
       todo_priority: this.state.todo_priority,
-      todo_completed: this.state.todo_completed
+      todo_completed: this.state.todo_completed,
+      todo_startdate: this.state.todo_startdate,
+      todo_completeddate: this.state.todo_completeddate
+
   };
 
   axios.post('http://localhost:5555/todos/add', newTodo)
@@ -61,7 +80,9 @@ class Create_Todo extends Component {
       todo_description: '',
       todo_responsible: '',
       todo_priority: '',
-      todo_completed: false
+      todo_completed: false,
+      todo_startdate: '',
+      todo_completeddate: ''
     });
   }
 
@@ -89,6 +110,25 @@ class Create_Todo extends Component {
               onChange={this.onChangeTodoResponsible}
             />
           </div>
+          <div className='form-group'>
+            <label>Start Date: </label>
+            <input
+              type='text'
+              className='form-control'
+              value={this.state.todo_startdate}
+              onChange={this.onChangeTodoStartDate}
+            />
+          </div>
+          <div className='form-group'>
+            <label>Intended Completion Date: </label>
+            <input
+              type='text'
+              className='form-control'
+              value={this.state.todo_completeddate}
+              onChange={this.onChangeTodoCompleteDate}
+            />
+          </div>
+          
           <div className='form-group'>
             <div className='form-check form-check-inline'>
               <input

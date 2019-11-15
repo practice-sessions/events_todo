@@ -14,11 +14,11 @@ const Todo = props => (
       {props.todo.todo_priority}
     </td>
 
-    <td>
-      <Link to={'/Start Date/' + props.todo._id}>Start Date</Link>
+    <td className={props.todo.todo_completed ? 'completed' : ''}>
+      {props.todo.todo_startdate}
     </td>
-    <td>
-      <Link to={'/Completed Date/' + props.todo._id}>Completed Date</Link>
+    <td className={props.todo.todo_completed ? 'completed' : ''}>
+      {props.todo.todo_completeddate}
     </td>
     <td>
       <Link to={'/edit/' + props.todo._id}>Edit</Link>
@@ -64,7 +64,7 @@ class Todos_List extends Component {
               <th>Responsible</th>
               <th>Priority</th>
               <th>Start Date</th>
-              <th>Completed Date</th>
+              <th>Intended Completion Date</th>
               <th>Edit Todo</th>
               <th>Delete Todo</th>
             </tr>
