@@ -17,9 +17,10 @@ class Edit_Todo extends Component {
       todo_description: '',
       todo_responsible: '',
       todo_priority: '',
-      todo_completed: false,
       todo_startdate: '',
-      todo_completeddate: ''
+      todo_completeddate: '',
+      todo_completed: false
+      
     };
   }
 
@@ -104,7 +105,7 @@ class Edit_Todo extends Component {
         <h3 align='center'>Edit Todo</h3>
         <form onSubmit={this.onSubmit}>
           <div className='form-group'>
-            <label>Description: </label>
+            <label>Description:</label>
             <input
               type='text'
               className='form-control'
@@ -113,7 +114,7 @@ class Edit_Todo extends Component {
             />
           </div>
           <div className='form-group'>
-            <label>Responsible: </label>
+            <label>Responsible:</label>
             <input
               type='text'
               className='form-control'
@@ -122,9 +123,9 @@ class Edit_Todo extends Component {
             />
           </div>
           <div className='form-group'>
-            <label>Start Date: </label>
+            <label>Start Date:</label>
             <input
-              type='text'
+              type='date'
               className='form-control'
               value={this.state.todo_startdate}
               onChange={this.onChangeTodoStartDate}
@@ -133,7 +134,7 @@ class Edit_Todo extends Component {
           <div className='form-group'>
             <label>Intended Completion Date: </label>
             <input
-              type='text'
+              type='date'
               className='form-control'
               value={this.state.todo_completeddate}
               onChange={this.onChangeTodoCompleteDate}
