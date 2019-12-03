@@ -9,13 +9,18 @@ class Edit_Todo extends Component {
     this.onChangeTodoResponsible = this.onChangeTodoResponsible.bind(this);
     this.onChangeTodoPriority = this.onChangeTodoPriority.bind(this);
     this.onChangeTodoCompleted = this.onChangeTodoCompleted.bind(this);
+    this.onChangeTodoStartDate = this.onChangeTodoStartDate.bind(this);
+    this.onChangeTodoCompleteDate = this.onChangeTodoCompleteDate.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       todo_description: '',
       todo_responsible: '',
       todo_priority: '',
+      todo_startdate: '',
+      todo_completeddate: '',
       todo_completed: false
+      
     };
   }
 
@@ -27,7 +32,9 @@ class Edit_Todo extends Component {
           todo_description: response.data.todo_description,
           todo_responsible: response.data.todo_responsible,
           todo_priority: response.data.todo_priority,
-          todo_completed: response.data.todo_completed
+          todo_completed: response.data.todo_completed,
+          todo_startdate: response.data.todo_startdate,
+          todo_completeddate: response.data.todo_completeddate
         });
       })
       .catch(function(error) {
@@ -59,13 +66,27 @@ class Edit_Todo extends Component {
     });
   }
 
+  onChangeTodoStartDate(e) {
+    this.setState({
+      todo_startdate: e.target.value
+    });
+  }
+
+   onChangeTodoCompleteDate(e) {
+    this.setState({
+      todo_completeddate: e.target.value
+    });
+  }
+
   onSubmit(e) {
     e.preventDefault();
     const obj = {
       todo_description: this.state.todo_description,
       todo_responsible: this.state.todo_responsible,
       todo_priority: this.state.todo_priority,
-      todo_completed: this.state.todo_completed
+      todo_completed: this.state.todo_completed,
+      todo_startdate: this.state.todo_startdate,
+      todo_completeddate: this.state.todo_completeddate
     };
     console.log(obj);
     axios
@@ -81,10 +102,10 @@ class Edit_Todo extends Component {
   render() {
     return (
       <div>
-        <h3 align='center'>Update Todo</h3>
+        <h3 align='center'>Edit Todo</h3>
         <form onSubmit={this.onSubmit}>
           <div className='form-group'>
-            <label>Description: </label>
+            <label>Description:</label>
             <input
               type='text'
               className='form-control'
@@ -93,12 +114,30 @@ class Edit_Todo extends Component {
             />
           </div>
           <div className='form-group'>
-            <label>Responsible: </label>
+            <label>Responsible:</label>
             <input
               type='text'
               className='form-control'
               value={this.state.todo_responsible}
               onChange={this.onChangeTodoResponsible}
+            />
+          </div>
+          <div className='form-group'>
+            <label>Start Date:</label>
+            <input
+              type='date'
+              className='form-control'
+              value={this.state.todo_startdate}
+              onChange={this.onChangeTodoStartDate}
+            />
+          </div>
+          <div className='form-group'>
+            <label>Intended Completion Date: </label>
+            <input
+              type='date'
+              className='form-control'
+              value={this.state.todo_completeddate}
+              onChange={this.onChangeTodoCompleteDate}
             />
           </div>
           <div className='form-group'>
